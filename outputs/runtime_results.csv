@@ -1,0 +1,31 @@
+component,variant,input_size,time_ms
+sorting,Merge sort,100,0.673
+sorting,Quick sort,100,0.553
+sorting,Insertion sort,100,1.247
+sorting,Merge sort,500,3.947
+sorting,Quick sort,500,2.623
+sorting,Insertion sort,500,25.693
+sorting,Merge sort,1000,7.151
+sorting,Quick sort,1000,5.31
+sorting,Insertion sort,1000,98.61
+sorting,Merge sort,2000,20.589
+sorting,Quick sort,2000,14.428
+sorting,Insertion sort,2000,427.777
+sorting,Merge sort,4000,40.697
+sorting,Quick sort,4000,27.954
+sorting,Insertion sort,4000,1722.932
+knapsack_dp,W=100,20,0.796
+knapsack_dp,W=100,50,1.787
+knapsack_dp,W=100,100,3.138
+knapsack_dp,W=100,200,6.38
+knapsack_dp,W=100,400,12.353
+dijkstra,single source,50,0.16
+dijkstra,single source,200,0.808
+dijkstra,single source,800,5.105
+dijkstra,single source,3200,27.52
+dijkstra,single source,6400,44.169
+nn_tsp,500-node graph,5,13.486
+nn_tsp,500-node graph,10,26.62
+nn_tsp,500-node graph,20,53.82
+nn_tsp,500-node graph,40,99.359
+nn_tsp,500-node graph,80,224.402

@@ -1,0 +1,11 @@
+{
+  "depot": "Depot",
+  "edges": [
+    ["Depot", "Sector14", 4], ["Depot", "Udyog", 7], ["Depot", "MGRoad", 9],
+    ["Sector14", "CyberHub", 5], ["Sector14", "MGRoad", 3],
+    ["MGRoad", "GolfCourse", 4], ["MGRoad", "DLFPhase", 6],
+    ["CyberHub", "DLFPhase", 2], ["CyberHub", "Udyog", 8],
+    ["GolfCourse", "Sohna", 12], ["DLFPhase", "Sohna", 10],
+    ["Udyog", "Sohna", 15]
+  ]
+}

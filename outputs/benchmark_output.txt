@@ -1,0 +1,31 @@
+component         size   time (ms)
+sorting/Merge sort         100       0.151
+sorting/Quick sort         100       0.109
+sorting/Insertion sort     100       0.253
+sorting/Merge sort         500       0.956
+sorting/Quick sort         500       0.712
+sorting/Insertion sort     500        5.11
+sorting/Merge sort        1000       1.685
+sorting/Quick sort        1000       1.284
+sorting/Insertion sort    1000      22.207
+sorting/Merge sort        2000       3.722
+sorting/Quick sort        2000       2.766
+sorting/Insertion sort    2000      91.255
+sorting/Merge sort        4000       8.473
+sorting/Quick sort        4000       6.332
+sorting/Insertion sort    4000     365.263
+knapsack_dp/W=100           20       0.122
+knapsack_dp/W=100           50       0.268
+knapsack_dp/W=100          100       0.525
+knapsack_dp/W=100          200       1.009
+knapsack_dp/W=100          400       2.194
+dijkstra/single source      50       0.044
+dijkstra/single source     200       0.153
+dijkstra/single source     800       0.732
+dijkstra/single source    3200       3.701
+dijkstra/single source    6400       8.419
+nn_tsp/500-node graph        5       2.685
+nn_tsp/500-node graph       10       4.972
+nn_tsp/500-node graph       20       9.504
+nn_tsp/500-node graph       40      19.044
+nn_tsp/500-node graph       80      38.066

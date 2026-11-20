@@ -1,0 +1,121 @@
+================================================================
+MINI-COURIER PLANNER
+================================================================
+Parcels: 300   Graph nodes: 60   Van capacity: 100 kg
+
+STEP 1 - Parcels sorted by deadline (earliest first), then priority
+ID     Dest         Wt(kg)  Prio  Deadline(min)
+P0135  C17               1     7             31
+P0291  C51               9     5             32
+P0154  C26               4     3             35
+P0060  C15              10     4             37
+P0101  C40              13     9             38
+P0111  C36              12     7             39
+P0095  C30               6     2             39
+P0203  C33              11     6             42
+P0075  C4               11     9             45
+P0188  C54               2     8             49
+P0173  C58              13    10             50
+P0263  C15              11    10             51
+P0182  C2               15     7             57
+P0004  C38               7     1             60
+P0271  C43               7     9             67
+... (285 more)
+
+STEP 2 - 0/1 Knapsack DP (capacity 100 kg)
+Best total priority : 370
+Selected parcels    : ['P0135', 'P0188', 'P0239', 'P0098', 'P0050', 'P0086', 'P0043', 'P0193', 'P0109', 'P0192', 'P0130', 'P0072', 'P0227', 'P0006', 'P0191', 'P0123', 'P0254', 'P0272', 'P0194', 'P0079', 'P0277', 'P0206', 'P0228', 'P0251', 'P0175', 'P0240', 'P0258', 'P0256', 'P0261', 'P0047', 'P0212', 'P0300', 'P0179', 'P0016', 'P0036', 'P0120', 'P0162', 'P0274', 'P0156', 'P0150', 'P0237', 'P0288', 'P0273', 'P0275', 'P0046', 'P0158', 'P0014', 'P0293', 'P0059']
+Total weight loaded : 100 / 100 kg
+Left for next trip  : 251 parcels
+
+STEP 3 - Dijkstra shortest distances from depot
+  Depot -> C4         : 2 km
+  Depot -> C53        : 3 km
+  Depot -> C17        : 5 km
+  Depot -> C12        : 10 km
+  Depot -> C25        : 13 km
+  Depot -> C31        : 9 km
+  Depot -> C32        : 12 km
+  Depot -> C58        : 13 km
+  Depot -> C3         : 5 km
+  Depot -> C19        : 8 km
+  Depot -> C59        : 8 km
+  Depot -> C16        : 15 km
+  Depot -> C13        : 21 km
+  Depot -> C30        : 18 km
+  Depot -> C22        : 17 km
+  Depot -> C37        : 11 km
+  Depot -> C29        : 13 km
+  Depot -> C10        : 14 km
+  Depot -> C15        : 13 km
+  Depot -> C36        : 10 km
+  Depot -> C56        : 7 km
+  Depot -> C21        : 5 km
+  Depot -> C11        : 17 km
+  Depot -> C27        : 23 km
+  Depot -> C28        : 11 km
+  Depot -> C2         : 9 km
+  Depot -> C39        : 11 km
+  Depot -> C49        : 15 km
+  Depot -> C5         : 19 km
+  Depot -> C54        : 25 km
+  Depot -> C52        : 20 km
+
+STEP 4 - Nearest-neighbour TSP delivery route
+  Stop order  : Depot -> C4 -> C53 -> C17 -> C12 -> C25 -> C31 -> C32 -> C58 -> C3 -> C19 -> C59 -> C16 -> C13 -> C30 -> C22 -> C37 -> C29 -> C10 -> C15 -> C36 -> C56 -> C21 -> C11 -> C27 -> C28 -> C2 -> C39 -> C49 -> C5 -> C54 -> C52 -> Depot
+  Road path   : Depot -> C4 -> Depot -> C53 -> C17 -> C38 -> C12 -> C25 -> C12 -> C20 -> C31 -> C32 -> C58 -> C57 -> C3 -> C19 -> C59 -> C16 -> C13 -> C30 -> C22 -> C37 -> C35 -> C47 -> C20 -> C29 -> C10 -> C29 -> C15 -> C12 -> C6 -> C36 -> C56 -> C7 -> Depot -> C21 -> C11 -> C27 -> C28 -> C34 -> C2 -> C39 -> C38 -> C17 -> C8 -> C49 -> C8 -> C17 -> C53 -> Depot -> C5 -> C54 -> C5 -> C40 -> C9 -> C52 -> C4 -> Depot
+  Route length: 306 km  (~612 min driving)
+
+STEP 5 - Deadline check (arrival = distance travelled x 2 min/km)
+  P0135 -> C17         arrive   18 min, deadline   31  OK
+  P0188 -> C54         arrive  502 min, deadline   49  LATE
+  P0239 -> C32         arrive   62 min, deadline   84  OK
+  P0098 -> C17         arrive   18 min, deadline  100  OK
+  P0050 -> C4          arrive    4 min, deadline  110  OK
+  P0086 -> C11         arrive  302 min, deadline  112  LATE
+  P0043 -> C49         arrive  422 min, deadline  138  LATE
+  P0193 -> C16         arrive  114 min, deadline  147  OK
+  P0109 -> C3          arrive   86 min, deadline  163  OK
+  P0192 -> C54         arrive  502 min, deadline  186  LATE
+  P0130 -> C2          arrive  378 min, deadline  212  LATE
+  P0072 -> C29         arrive  212 min, deadline  217  OK
+  P0227 -> C21         arrive  278 min, deadline  219  LATE
+  P0006 -> C39         arrive  384 min, deadline  233  LATE
+  P0191 -> C49         arrive  422 min, deadline  234  LATE
+  P0123 -> C56         arrive  254 min, deadline  257  OK
+  P0254 -> C28         arrive  344 min, deadline  260  LATE
+  P0272 -> C30         arrive  162 min, deadline  288  OK
+  P0194 -> C37         arrive  182 min, deadline  292  OK
+  P0079 -> C25         arrive   40 min, deadline  301  OK
+  P0277 -> C49         arrive  422 min, deadline  303  LATE
+  P0206 -> C28         arrive  344 min, deadline  306  LATE
+  P0228 -> C13         arrive  136 min, deadline  313  OK
+  P0251 -> C19         arrive   92 min, deadline  325  OK
+  P0175 -> C31         arrive   56 min, deadline  335  OK
+  P0240 -> C10         arrive  214 min, deadline  341  OK
+  P0258 -> C29         arrive  212 min, deadline  341  OK
+  P0256 -> C5          arrive  490 min, deadline  344  LATE
+  P0261 -> C39         arrive  384 min, deadline  360  LATE
+  P0047 -> C59         arrive  100 min, deadline  361  OK
+  P0212 -> C22         arrive  168 min, deadline  362  OK
+  P0300 -> C3          arrive   86 min, deadline  369  OK
+  P0179 -> C32         arrive   62 min, deadline  374  OK
+  P0016 -> C36         arrive  248 min, deadline  400  OK
+  P0036 -> C39         arrive  384 min, deadline  420  OK
+  P0120 -> C2          arrive  378 min, deadline  451  OK
+  P0162 -> C58         arrive   70 min, deadline  490  OK
+  P0274 -> C53         arrive   14 min, deadline  503  OK
+  P0156 -> C15         arrive  222 min, deadline  505  OK
+  P0150 -> C2          arrive  378 min, deadline  516  OK
+  P0237 -> C12         arrive   34 min, deadline  519  OK
+  P0288 -> C25         arrive   40 min, deadline  550  OK
+  P0273 -> C21         arrive  278 min, deadline  556  OK
+  P0275 -> C27         arrive  320 min, deadline  560  OK
+  P0046 -> C49         arrive  422 min, deadline  573  OK
+  P0158 -> C30         arrive  162 min, deadline  573  OK
+  P0014 -> C52         arrive  572 min, deadline  579  OK
+  P0293 -> C56         arrive  254 min, deadline  581  OK
+  P0059 -> C22         arrive  168 min, deadline  597  OK
+
+Summary: 36/49 parcels on time.
+(NN-TSP is optimised for distance, not deadlines - see report for improvements.)
